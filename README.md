@@ -81,8 +81,8 @@ The project is being developed in multiple phases:
 
 1. Design Board Data Structure (XS)
 
-    - [ ] Implement a 2D grid representation (likely 20x20 standard size)
-    - [ ] Define constants for board dimensions
+    - [X] Implement a 2D grid representation (likely 20x20 standard size)
+    - [X] Define constants for board dimensions
 
 2. Design Piece Shapes (S)
 
