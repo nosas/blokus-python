@@ -76,30 +76,176 @@ print(f"Board state:\n{state.board}")
 
 The project is being developed in multiple phases:
 
-### Phase 1: Core Game Engine (2 weeks)
-- **Week 1: Data Models and Basic Mechanics**
-  - Board and piece data structures
-  - Piece transformations (rotation, flipping)
-  - Standard piece set implementation
-- **Week 2: Game Rules and Flow**
-  - Placement validation
-  - Turn management
-  - Scoring and end-game detection
 
-### Phase 2: User Interface (2 weeks)
-- Command-line interface
-- Graphical user interface
-- Piece manipulation controls
+### Phase 1: Core Game Mechanics
 
-### Phase 3: AI Opponents (2 weeks)
-- Basic rule-following AI
-- Intermediate strategic AI
-- Advanced AI with lookahead
+1. Design Board Data Structure (XS)
 
-### Phase 4: Multiplayer and Polish (2 weeks)
-- Network play implementation
-- Performance optimizations
-- Final polish and bug fixes
+    - [ ] Implement a 2D grid representation (likely 20x20 standard size)
+    - [ ] Define constants for board dimensions
+
+2. Design Piece Shapes (S)
+
+    - [ ] Create data structures for all 21 polyomino shapes per player
+    - [ ] Define piece IDs and properties (size, shape)
+
+3. Piece Set Management (XS)
+
+    - [ ] Create data structure to represent a player's set of pieces
+    - [ ] Implement methods to track available/used pieces
+
+4. Player Initialization (XS)
+
+    - [ ] Create player objects with color assignment
+    - [ ] Assign initial piece sets to players
+
+5. Basic Board Operations (S)
+
+    - [ ] Implement methods to check and update board state
+    - [ ] Create piece placement functionality
+
+### Phase 2: Game Rules Implementation
+
+6. First Move Validation (XS)
+
+    - [ ] Implement logic for first move (must cover a corner)
+
+7. Adjacency Rules Implementation (M)
+
+    - [ ] Implement corner-to-corner contact validation
+    - [ ] Implement checks to prevent same-color pieces touching sides
+
+8. Valid Move Generation (M)
+
+    - [ ] Create algorithm to find all valid placements for a given piece
+
+9. Piece Manipulation (S)
+
+    - [ ] Implement rotation functionality for pieces
+    - [ ] Implement flipping functionality for pieces
+
+### Phase 3: Game Flow
+
+10. Turn Management (S)
+
+    - [ ] Implement player rotation logic
+    - [ ] Handle player pass conditions when no moves are available
+
+11. Game End Detection (XS)
+
+    - [ ] Detect when no players can make valid moves
+    - [ ] Trigger game end state
+
+12. Basic Scoring Implementation (XS)
+
+    - [ ] Calculate remaining squares scoring
+    - [ ] Implement win condition logic
+
+### Phase 4: Basic UI
+
+13. Board Visualization (M)
+
+    - [ ] Create grid rendering system
+    - [ ] Implement board state visualization
+
+14. Piece Visualization (M)
+
+    - [ ] Create visual representations for all pieces
+    - [ ] Implement basic piece selection
+
+15. Game Controls UI (S)
+
+    - [ ] Create buttons for basic game actions (place piece, pass, etc.)
+    - [ ] Add basic scoring display
+
+### Phase 5: Core Game Testing
+
+16. Rule Validation Testing (S)
+
+    - [ ] Create unit tests for all game rules
+    - [ ] Test edge cases for placement validation
+
+17. Game Flow Testing (S)
+
+    - [ ] Test complete game scenarios
+    - [ ] Validate turn order and management
+    - [ ] Test game end conditions
+
+### Phase 6: Enhanced Game Features
+
+18. Advanced Scoring Implementation (XS)
+
+    - [ ] Implement bonus points for placing all pieces
+    - [ ] Add extra bonus for playing smallest piece last
+
+19. Player State Tracking (S)
+
+    - [ ] Track placed pieces for each player
+    - [ ] Maintain available moves for each player
+    - [ ] Track player scores during gameplay
+
+20. Game Variations: Two-Player Mode (S)
+
+    - [ ] Implement controller for two colors per player
+    - [ ] Adjust turn order for two-player mode
+
+21. Game Variations: Three-Player Mode (S)
+
+    - [ ] Implement shared color mechanics
+    - [ ] Handle the alternating shared color turns
+
+### Phase 7: Enhanced UI
+
+22. Piece Manipulation UI (M)
+
+    - [ ] Implement drag and drop functionality
+    - [ ] Add rotation and flipping UI controls
+    - [ ] Create preview for piece placement
+
+23. Move Validation Feedback (S)
+
+    - [ ] Add highlighting for valid move spots
+    - [ ] Add visual feedback for invalid moves
+
+24. Game Setup UI (S)
+
+    - [ ] Create player selection and configuration screens
+    - [ ] Implement game variation selection
+    - [ ] Add options for scoring method
+
+25. Feedback and Animation (M)
+
+    - [ ] Implement animations for piece placement
+    - [ ] Create end-game summary visuals
+
+### Phase 8: Advanced Features
+
+26. AI Player Implementation (L)
+
+    - [ ] Create basic AI strategy for piece placement
+    - [ ] Implement different difficulty levels
+
+27. Game State Persistence (M)
+
+    - [ ] Implement save/load functionality
+    - [ ] Create game state serialization
+
+28. Performance Optimization (M)
+
+    - [ ] Benchmark move validation speed
+    - [ ] Optimize critical path operations
+
+### Phase 9: Deployment & Operations
+
+29. Documentation (S)
+
+    - [ ] Create developer documentation
+    - [ ] Write user manual and tutorials
+
+30. Multiplayer Infrastructure (L) - Optional
+
+    - [ ] Design client-server architecture for online play
+    - [ ] Implement game state synchronization
 
 ## Development
 
