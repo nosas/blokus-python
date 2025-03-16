@@ -86,7 +86,7 @@ The project is being developed in multiple phases:
 
 2. Design Piece Shapes (S)
 
-    - [ ] Create data structures for all 21 polyomino shapes per player
+    - [x] Create data structures for all 21 polyomino shapes per player
     - [ ] Define piece IDs and properties (size, shape)
 
 3. Piece Set Management (XS)
