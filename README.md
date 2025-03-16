@@ -87,17 +87,17 @@ The project is being developed in multiple phases:
 2. Design Piece Shapes (S)
 
     - [x] Create data structures for all 21 polyomino shapes per player
-    - [ ] Define piece IDs and properties (size, shape)
+    - [X] Define piece IDs and properties (size, shape)
 
 3. Piece Set Management (XS)
 
-    - [ ] Create data structure to represent a player's set of pieces
-    - [ ] Implement methods to track available/used pieces
+    - [X] Create data structure to represent a player's set of pieces
+    - [X] Implement methods to track available/used pieces
 
 4. Player Initialization (XS)
 
-    - [ ] Create player objects with color assignment
-    - [ ] Assign initial piece sets to players
+    - [X] Create player objects with color assignment
+    - [X] Assign initial piece sets to players
 
 5. Basic Board Operations (S)
 
