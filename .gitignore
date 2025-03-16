@@ -2,3 +2,5 @@ env
 .DS_Store
 blokus.egg-info
 __pycache__
+.coverage
+.vscode
