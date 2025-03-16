@@ -4,7 +4,7 @@
 PYTHON = python3
 
 # Virtual environment
-VENV = env
+VENV = .venv
 VENV_PYTHON = $(VENV)/bin/python
 VENV_UV = uv
 

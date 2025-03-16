@@ -10,15 +10,15 @@ readme = "README.md"
 requires-python = ">=3.12"
 license = { text = "MIT" }
 authors = [{ name = "Sason Reza" }]
-dependencies = ["numpy"]
+dependencies = ["numpy==2.2.3"]
 
 [project.optional-dependencies]
 dev = [
-    "black>=23.3.0",
-    "isort>=5.12.0",
-    "ruff>=0.0.262",
-    "pytest>=7.3.1",
-    "pytest-cov>=4.1.0",
+    "black==25.1.0",
+    "isort==6.0.1",
+    "ruff==0.11.0",
+    "pytest==8.3.5",
+    "pytest-cov==6.0.0",
 ]
 
 [tool.black]
