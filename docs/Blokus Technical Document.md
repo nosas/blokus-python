@@ -159,7 +159,7 @@ The stronger bots will select strategies based on game phase and position:
 def select_strategy(self, game_state):
     phase = self._determine_game_phase(game_state)
     position = self._assess_position(game_state)
-    
+
     # Select strategy (expansion, defensive, efficient, balanced)
     # based on game phase and position
 ```
@@ -190,70 +190,70 @@ The UI must clearly show:
 ### 4.1 Phase 1: Core Game Engine (Weeks 1-2)
 
 #### Week 1: Data Models and Basic Mechanics
-| Day | Tasks | Deliverables | Technical Details |
-|-----|-------|--------------|-------------------|
-| 1-2 | Define board and piece data structures | BlokusBoard and BlokusPiece classes | Using NumPy arrays for efficient operations |
-| 3-4 | Implement piece transformations | Rotation and flipping methods | Handle edge cases for non-rectangular pieces |
-| 5-7 | Create standard piece set | Complete set of 21 piece definitions | Include metadata for identification and visualization |
+| Day | Tasks                                  | Deliverables                         | Technical Details                                     |
+| --- | -------------------------------------- | ------------------------------------ | ----------------------------------------------------- |
+| 1-2 | Define board and piece data structures | BlokusBoard and BlokusPiece classes  | Using NumPy arrays for efficient operations           |
+| 3-4 | Implement piece transformations        | Rotation and flipping methods        | Handle edge cases for non-rectangular pieces          |
+| 5-7 | Create standard piece set              | Complete set of 21 piece definitions | Include metadata for identification and visualization |
 
 #### Week 2: Game Rules and Flow
-| Day | Tasks | Deliverables | Technical Details |
-|-----|-------|--------------|-------------------|
-| 1-3 | Implement placement validation | Complete rule enforcement system | Rigorous testing of all game rules |
-| 4-5 | Build turn management | Game flow control and player rotation | Support for handling invalid moves and skipped turns |
-| 6-7 | Create scoring and end-game detection | Scoring algorithms and game termination | Implement both basic and advanced scoring modes |
+| Day | Tasks                                 | Deliverables                            | Technical Details                                    |
+| --- | ------------------------------------- | --------------------------------------- | ---------------------------------------------------- |
+| 1-3 | Implement placement validation        | Complete rule enforcement system        | Rigorous testing of all game rules                   |
+| 4-5 | Build turn management                 | Game flow control and player rotation   | Support for handling invalid moves and skipped turns |
+| 6-7 | Create scoring and end-game detection | Scoring algorithms and game termination | Implement both basic and advanced scoring modes      |
 
 **Milestone 1**: Functional game engine with complete rule enforcement
 
 ### 4.2 Phase 2: Basic UI and Gameplay (Weeks 3-4)
 
 #### Week 3: Playable Interface
-| Day | Tasks | Deliverables | Technical Details |
-|-----|-------|--------------|-------------------|
-| 1-3 | Implement piece selection controls | Interactive piece inventory | Support for keyboard and mouse interaction |
-| 4-5 | Create board visualization | Visual representation of game state | Clear distinction between players and empty cells |
-| 6-7 | Integrate game state with UI | Complete input/output system | Ensure consistent state between model and view |
+| Day | Tasks                              | Deliverables                        | Technical Details                                 |
+| --- | ---------------------------------- | ----------------------------------- | ------------------------------------------------- |
+| 1-3 | Implement piece selection controls | Interactive piece inventory         | Support for keyboard and mouse interaction        |
+| 4-5 | Create board visualization         | Visual representation of game state | Clear distinction between players and empty cells |
+| 6-7 | Integrate game state with UI       | Complete input/output system        | Ensure consistent state between model and view    |
 
 #### Week 4: Gameplay Polish
-| Day | Tasks | Deliverables | Technical Details |
-|-----|-------|--------------|-------------------|
-| 1-2 | Add move feedback | Visual cues for legal/illegal moves | Highlight affected cells and error messages |
-| 3-4 | Implement undo/redo | Move history and state restoration | Use command pattern for action tracking |
-| 5-7 | Add save/load functionality | Game state serialization | JSON format for compatibility and readability |
+| Day | Tasks                       | Deliverables                        | Technical Details                             |
+| --- | --------------------------- | ----------------------------------- | --------------------------------------------- |
+| 1-2 | Add move feedback           | Visual cues for legal/illegal moves | Highlight affected cells and error messages   |
+| 3-4 | Implement undo/redo         | Move history and state restoration  | Use command pattern for action tracking       |
+| 5-7 | Add save/load functionality | Game state serialization            | JSON format for compatibility and readability |
 
 **Milestone 2**: Fully playable game with basic UI
 
 ### 4.3 Phase 3: AI Players (Weeks 5-6)
 
 #### Week 5: Basic AI Implementation
-| Day | Tasks | Deliverables | Technical Details |
-|-----|-------|--------------|-------------------|
-| 1-3 | Create heuristic functions | Core evaluation metrics | Optimize for efficient calculation |
-| 4-7 | Build rule-based bot | First functional AI player | Use composite scoring approach |
+| Day | Tasks                      | Deliverables               | Technical Details                  |
+| --- | -------------------------- | -------------------------- | ---------------------------------- |
+| 1-3 | Create heuristic functions | Core evaluation metrics    | Optimize for efficient calculation |
+| 4-7 | Build rule-based bot       | First functional AI player | Use composite scoring approach     |
 
 #### Week 6: Enhanced AI Capabilities
-| Day | Tasks | Deliverables | Technical Details |
-|-----|-------|--------------|-------------------|
+| Day | Tasks                               | Deliverables                | Technical Details                          |
+| --- | ----------------------------------- | --------------------------- | ------------------------------------------ |
 | 1-3 | Implement phase-specific strategies | Strategic adaptation system | Separate early, mid, and endgame behaviors |
-| 4-5 | Add position-based adaptations | Dynamic strategy selection | Adjust based on winning/losing position |
-| 6-7 | Create testing framework | AI evaluation system | Metrics for bot performance comparison |
+| 4-5 | Add position-based adaptations      | Dynamic strategy selection  | Adjust based on winning/losing position    |
+| 6-7 | Create testing framework            | AI evaluation system        | Metrics for bot performance comparison     |
 
 **Milestone 3**: Functional AI opponents with varying strategies
 
 ### 4.4 Phase 4: Advanced Features (Weeks 7-8)
 
 #### Week 7: Game Variants and AI Improvements
-| Day | Tasks | Deliverables | Technical Details |
-|-----|-------|--------------|-------------------|
-| 1-3 | Add variant support | Blokus Duo and Trigon modes | Configurable rule sets and board sizes |
-| 4-7 | Implement MCTS-based bot | Stronger AI player | Optimized tree search with pruning |
+| Day | Tasks                    | Deliverables                | Technical Details                      |
+| --- | ------------------------ | --------------------------- | -------------------------------------- |
+| 1-3 | Add variant support      | Blokus Duo and Trigon modes | Configurable rule sets and board sizes |
+| 4-7 | Implement MCTS-based bot | Stronger AI player          | Optimized tree search with pruning     |
 
 #### Week 8: Final Polish and Infrastructure
-| Day | Tasks | Deliverables | Technical Details |
-|-----|-------|--------------|-------------------|
-| 1-3 | Create bot arena | Automated testing environment | Tournament and league systems |
-| 4-5 | Performance optimization | Improved execution speed | Profile and optimize critical paths |
-| 6-7 | Documentation and cleanup | Complete code documentation | Include developer and user guides |
+| Day | Tasks                     | Deliverables                  | Technical Details                   |
+| --- | ------------------------- | ----------------------------- | ----------------------------------- |
+| 1-3 | Create bot arena          | Automated testing environment | Tournament and league systems       |
+| 4-5 | Performance optimization  | Improved execution speed      | Profile and optimize critical paths |
+| 6-7 | Documentation and cleanup | Complete code documentation   | Include developer and user guides   |
 
 **Milestone 4**: Complete game with multiple AI difficulty levels
 
@@ -318,13 +318,13 @@ blokus/
 
 ## 6. Risk Assessment and Mitigation
 
-| Risk | Probability | Impact | Mitigation Strategy |
-|------|------------|--------|---------------------|
-| Complex rule implementation bugs | High | Medium | Comprehensive test suite, formal verification of core rules |
-| Performance bottlenecks in AI | Medium | High | Incremental optimization, profiling-guided improvements |
-| UI responsiveness issues | Medium | Medium | Separate rendering thread, throttle visualization updates |
-| Scope creep beyond essential features | High | Medium | Strict prioritization, phased deliverables, clear milestone criteria |
-| Technical debt from rapid implementation | Medium | High | Regular refactoring sessions, code reviews, maintainability metrics |
+| Risk                                     | Probability | Impact | Mitigation Strategy                                                  |
+| ---------------------------------------- | ----------- | ------ | -------------------------------------------------------------------- |
+| Complex rule implementation bugs         | High        | Medium | Comprehensive test suite, formal verification of core rules          |
+| Performance bottlenecks in AI            | Medium      | High   | Incremental optimization, profiling-guided improvements              |
+| UI responsiveness issues                 | Medium      | Medium | Separate rendering thread, throttle visualization updates            |
+| Scope creep beyond essential features    | High        | Medium | Strict prioritization, phased deliverables, clear milestone criteria |
+| Technical debt from rapid implementation | Medium      | High   | Regular refactoring sessions, code reviews, maintainability metrics  |
 
 ## 7. Key Interfaces and APIs
 
@@ -435,18 +435,18 @@ By following this implementation plan, the development team will create a robust
 def create_standard_piece_set():
     """Create the standard 21 Blokus pieces as numpy arrays."""
     pieces = []
-    
+
     # 1-square piece (monomino)
     pieces.append(np.array([[1]]))
-    
+
     # 2-square piece (domino)
     pieces.append(np.array([[1, 1]]))
-    
+
     # 3-square pieces (trominoes)
     pieces.append(np.array([[1, 1, 1]]))  # I
     pieces.append(np.array([[1, 1],
                            [1, 0]]))      # L
-    
+
     # 4-square pieces (tetrominoes)
     pieces.append(np.array([[1, 1, 1, 1]]))  # I
     pieces.append(np.array([[1, 1, 1],
@@ -457,22 +457,22 @@ def create_standard_piece_set():
                            [1, 1]]))         # O
     pieces.append(np.array([[1, 1, 1],
                            [0, 1, 0]]))      # T
-    
+
     # 5-square pieces (pentominoes) - all 12 of them
     # ... (detailed definitions provided in code)
-    
+
     return pieces
 ```
 
 ## Appendix B: Glossary of Terms
 
-| Term | Definition |
-|------|------------|
-| **Blokus** | A strategy board game for 2-4 players where players place pieces on a grid, touching only at corners |
-| **Piece** | A polyomino shape composed of 1-5 connected squares that players place on the board |
-| **Corner** | A point where the corners of four cells meet, used for connecting pieces of the same color |
-| **First move** | Each player's first piece must cover one of the board's corner cells |
-| **Valid placement** | A piece position that follows all game rules (corner connectivity, no side touching, etc.) |
-| **Phase** | A stage of the game (opening, middle, endgame) with different strategic priorities |
-| **Heuristic** | An evaluation function that scores board positions based on strategic criteria |
-| **MCTS** | Monte Carlo Tree Search, an algorithm for decision making used in advanced AI |
+| Term                | Definition                                                                                           |
+| ------------------- | ---------------------------------------------------------------------------------------------------- |
+| **Blokus**          | A strategy board game for 2-4 players where players place pieces on a grid, touching only at corners |
+| **Piece**           | A polyomino shape composed of 1-5 connected squares that players place on the board                  |
+| **Corner**          | A point where the corners of four cells meet, used for connecting pieces of the same color           |
+| **First move**      | Each player's first piece must cover one of the board's corner cells                                 |
+| **Valid placement** | A piece position that follows all game rules (corner connectivity, no side touching, etc.)           |
+| **Phase**           | A stage of the game (opening, middle, endgame) with different strategic priorities                   |
+| **Heuristic**       | An evaluation function that scores board positions based on strategic criteria                       |
+| **MCTS**            | Monte Carlo Tree Search, an algorithm for decision making used in advanced AI                        |
