@@ -3,8 +3,8 @@ import numpy as np
 import pytest
 
 from src.core.board import BlokusBoard
-from src.utils.constants import Color
 from src.core.piece import BlokusPiece
+from src.utils.constants import Color
 
 
 class TestPlacementValidation:
@@ -257,3 +257,170 @@ class TestPlacementValidation:
         # These should be valid/invalid based on corner connectivity rules
         assert board.is_valid_placement(small_piece, (2, 1), Color.BLUE, is_first_move=False)
         assert not board.is_valid_placement(small_piece, (1, 1), Color.BLUE, is_first_move=False)
+
+
+class TestFindValidPlacements:
+    @pytest.fixture
+    def board(self):
+        return BlokusBoard(size=10)
+
+    @pytest.fixture
+    def simple_piece(self):
+        # Create a simple 2x2 L-shaped piece
+        return BlokusPiece(
+            np.array([[1]]),
+            Color.BLUE,
+        )
+
+    def test_first_move_valid_placements(self, board, simple_piece):
+        """Test that first move returns only corner positions."""
+        valid_placements = board.find_valid_placements(
+            simple_piece, Color.BLUE, is_first_move=True
+        )
+
+        # Should be exactly 4 valid placements (one for each corner)
+        assert len(valid_placements) == 4
+        assert (0, 0) in valid_placements
+        assert (0, board.size - 1) in valid_placements
+        assert (board.size - 1, 0) in valid_placements
+        assert (board.size - 1, board.size - 1) in valid_placements
+
+    def test_second_move_valid_placements(self, board, simple_piece):
+        """Test finding valid placements for a second move."""
+        # Place first piece at corner
+        board.place_piece(simple_piece, (0, 0), Color.BLUE)
+
+        # Get valid placements for second piece
+        second_piece = BlokusPiece(
+            np.array(
+                [
+                    [1, 1],
+                    [0, 1],
+                ]
+            ),
+            Color.BLUE,
+        )
+
+        valid_placements = board.find_valid_placements(
+            second_piece, Color.BLUE, is_first_move=False
+        )
+
+        # Should include positions where piece connects at corners
+        assert len(valid_placements) == 1
+        assert (1, 1) in valid_placements
+
+        # Count should match all possible placements around the corners
+        corners = board.get_player_corners(Color.BLUE)
+        assert len(corners) == 1
+
+    def test_no_valid_placements(self, board):
+        """Test when there are no valid placements for a piece."""
+        # Create a large piece
+        large_piece = BlokusPiece(
+            np.array(
+                [
+                    [1, 1, 1, 1, 1],
+                    [1, 1, 1, 1, 1],
+                    [1, 1, 1, 1, 1],
+                    [1, 1, 1, 1, 1],
+                    [1, 1, 1, 1, 1],
+                ]
+            ),
+            Color.BLUE,
+        )
+
+        # Place a piece that blocks most corners
+        small_piece = BlokusPiece(np.array([[1]]), Color.BLUE)
+        for corner in [
+            (0, 0),
+            (0, board.size - 1),
+            (board.size - 1, 0),
+            (board.size - 1, board.size - 1),
+        ]:
+            board.place_piece(small_piece, corner, Color.BLUE)
+
+        # Place the large piece so it blocks all other corners on a size 10 board
+        board.place_piece(large_piece, (1, 1), Color.BLUE)
+
+        # Large piece should have no valid placements since corners are blocked
+        # and it can't connect properly
+        valid_placements = board.find_valid_placements(
+            large_piece, Color.BLUE, is_first_move=False
+        )
+        assert len(valid_placements) == 0
+
+    def test_multiple_players_valid_placements(self, board, simple_piece):
+        """Test finding valid placements with multiple players on the board."""
+        # Blue player's first move
+        board.place_piece(simple_piece, (0, 0), Color.BLUE)
+
+        # Red player's first move
+        red_piece = BlokusPiece(
+            np.array(
+                [
+                    [0, 1],
+                    [1, 1],
+                ]
+            ),
+            Color.RED,
+        )
+        board.place_piece(red_piece, (board.size - 2, board.size - 2), Color.RED)
+
+        # Find valid placements for blue's second piece
+        small_piece = BlokusPiece(np.array([[1, 1]]), Color.BLUE)
+        blue_placements = board.find_valid_placements(small_piece, Color.BLUE, is_first_move=False)
+
+        # Find valid placements for red's second piece
+        red_placements = board.find_valid_placements(small_piece, Color.RED, is_first_move=False)
+
+        # Both players should have valid placements
+        assert len(blue_placements) == 1
+        assert len(red_placements) == 2
+
+        # The two sets of valid placements should be different
+        assert set(blue_placements) != set(red_placements)
+
+    def test_all_rotations_and_flips(self, board):
+        """Test finding valid placements considering all rotations and flips."""
+        # Create an L-shaped piece and place it
+        l_piece = BlokusPiece(
+            np.array(
+                [
+                    [1, 0],
+                    [1, 0],
+                    [1, 1],
+                ]
+            ),
+            Color.BLUE,
+        )
+        board.place_piece(l_piece, (0, 0), Color.BLUE)
+
+        # Create a piece with distinct shape to test orientations
+        t_piece = BlokusPiece(
+            np.array(
+                [
+                    [0, 1, 0],
+                    [1, 1, 1],
+                ]
+            ),
+            Color.BLUE,
+        )
+
+        # Get valid placements without any transformations
+        normal_placements = board.find_valid_placements(t_piece, Color.BLUE, is_first_move=False)
+        expected_normal_placements = {(3, 1), (0, 2), (2, 2)}
+        assert set(normal_placements) == expected_normal_placements
+
+        # Now test with a rotation
+        t_piece.rotate(1)  # 90 degrees clockwise
+        rotated_placements = board.find_valid_placements(t_piece, Color.BLUE, is_first_move=False)
+        expected_rotated_placements = {(3, 2)}
+        assert rotated_placements == expected_rotated_placements
+
+        # The placements should be different as the piece shape has changed
+        assert normal_placements != rotated_placements
+
+        # Try with a horiztonal flip
+        t_piece.flip()
+        flipped_placements = board.find_valid_placements(t_piece, Color.BLUE, is_first_move=False)
+        assert flipped_placements == expected_normal_placements
