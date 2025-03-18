@@ -73,7 +73,7 @@ class BlokusPiece:
 
     def flip(self) -> "BlokusPiece":
         """
-        Flip the piece horizontally.
+        Flip the piece horizontally (left-to-right, not up-to-down)
 
         Returns:
             BlokusPiece: Self, for method chaining
