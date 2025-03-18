@@ -208,7 +208,7 @@ class BlokusBoard:
 
     def find_valid_placements(
         self, piece: BlokusPiece, player_color: Color, is_first_move: bool = False
-    ) -> list[tuple[int, int]]:
+    ) -> set[tuple[int, int]]:
         """
         Find all valid placements for a given piece.
 
@@ -218,9 +218,9 @@ class BlokusBoard:
             is_first_move (bool): Whether this is the player's first move
 
         Returns:
-            list: List of valid (row, col) positions
+            set: Set of valid (row, col) positions
         """
-        valid_placements: list[tuple[int, int]] = []
+        valid_placements: set[tuple[int, int]] = set()
         positions_to_check: set[tuple[int, int]] = set()
 
         # For first move, only check the corners
@@ -245,6 +245,6 @@ class BlokusBoard:
         # Check all potential positions
         for position in positions_to_check:
             if self.is_valid_placement(piece, position, player_color, is_first_move):
-                valid_placements.append(position)
+                valid_placements.add(position)
 
         return valid_placements
