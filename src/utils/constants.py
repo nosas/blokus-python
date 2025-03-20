@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import IntEnum, StrEnum
 
 
-class Color(Enum):
+class Color(IntEnum):
     EMPTY = 0
     BLUE = 1
     YELLOW = 2
@@ -11,3 +11,10 @@ class Color(Enum):
     @classmethod
     def get_player_colors(cls) -> list["Color"]:
         return [cls.BLUE, cls.YELLOW, cls.RED, cls.GREEN]
+
+
+class Message(StrEnum):
+    INVALID_MOVE = "Invalid move"
+    PIECE_NOT_FOUND = "Piece not found"
+    GAME_OVER = "Game is over"
+    SUCCESS = "Success"
