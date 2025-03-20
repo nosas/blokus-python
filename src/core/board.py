@@ -38,14 +38,14 @@ class BlokusBoard:
         new_board.board = self.board.copy()
         return new_board
 
-    def get_corners(self) -> set[tuple[int, int]]:
+    def get_corners(self) -> list[tuple[int, int]]:
         """Get the corners of the board."""
-        return {
+        return [
             (0, 0),
             (0, self.size - 1),
             (self.size - 1, 0),
             (self.size - 1, self.size - 1),
-        }
+        ]
 
     def is_valid_placement(
         self,
